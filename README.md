@@ -12,5 +12,6 @@
 
 ## Reading
 
+- Huelsenbeck chapter on models of sequence evolution
 - Yang, Ch. 1
 - Yang, Ch. 12.5-12.6 (as needed)
