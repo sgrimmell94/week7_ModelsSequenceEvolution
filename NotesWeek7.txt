@@ -1,0 +1,63 @@
+1. phylo genetic seminars archival online -- google 
+2. Paul Lewis -- the teacher man of phylogenetics, phyloseminar.org
+	A. did a 4 part series on the primer of phylogenetics
+Review from previous weeks:
+	1. markov chain - the chain of events that we care about 
+	2. markov property - the memorylessness of a markov chain 
+	3. discrete or continuous time 
+		A. discrete - a set time point
+			i. a discrete time point becomes continuous when the time points become infinitely small
+		B. continuous - a continum of time
+	4. state space
+		A. all possible states that can exist, we focus on discrete states in this class 
+			i. There is a 2x2 matrix of time and state, discrete and continuous. 
+		B.nucleotides are the general state space for phylogenetic models
+			i. can also use codons, amino acids
+	5. stationary distribution 
+		A. we have a define set of probabilites in which we will see states, if the chain has reached its stationary dostribution the states will be
+		seen at the same prob. through time
+		B. phylogenetics generally assumes that stationality was reached before hand
+	6. Reversible 
+		A. the probability found when moving forward is the same when moving backwards
+
+Poisson Process
+	1. # of events that occur in an interval of length t is a Pois(lambda*t) random variable
+	2. # of events that occur in disjoint interval are independent
+	3. the waiting times between events are t ~ Exp(lambda)
+
+Jukes Cantor
+	1. uses the rate matrix not called the transition matrix here
+	2. has the rate variable on the diagonals and the relative probabilities of transition
+		A. the relative here means that the probabilites have to be divided by their sum. The division by the sum is normalizing. 
+
+General Time Reversible Models
+	1. Tavare, 1986 
+	* there is more commonality for A -> G and C -> T because they are the same types and it is biochemically easier to change this way 
+	2. the pi(A, G, T, C) are frequencies, so they must add to one. There are 3 free values because the 4th must be able to add to 1
+		A. If you just add the #s of AGCTs it is an estimate of the frequency calculated values, it becomes a problem when there is dependency through relationships
+	3. the R values are the tendancy of a specific base to change into another
+		A. the R values have to average to one, so again free values = n-1
+	4. the rate values are then the commonality of a base by its tendancy 
+	5. This model has 8 parameters to try and estimate
+
+Reversibility 
+	1. pi_i * q_ij = pi_j * q_ji for i<> j 
+		
+Branch Length Scaling
+	1. Branch lengths typically denote expected # of substitutions. For this to be true the weighted mean across all states must be 1.
+		A. normalize them, divide by the total -- usually used to give a property to the data set 
+
+Probability of a character history 
+	Jukes Cantor 
+	1. Given a character history -- the waiting times between events given and assume they are independent 
+		A. using the exponential function to look up the probabilities associated 
+		B. the joint probability of the independent events is just the product of their probabilities 
+		C. Need to know the probabilities within the event, jukes cantor all probabilities are the same 
+	2. So, the prob(character history) = prod(exp(waiting times) * (character state change^n))
+	
+	If we begin the chain with an A and end on a G
+	3. we usually dont know any of the intermediate states or waiting times and generally not really total time
+		A. unknown character history and there are many many ways to get the answer
+	4. P(t) = e^(Qt)
+		A. being done to account for every single possible path to calculate how to get from A to G
+		B. given enough time passing, then we cant tell where we started but the probabilities go to the stationary probabilities 
